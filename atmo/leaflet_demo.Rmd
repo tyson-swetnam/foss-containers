@@ -1,0 +1,31 @@
+---
+title: "Tucson Leaflet Map"
+author: "Tyson Lee Swetnam"
+date: "6/6/2019"
+output: html_document
+---
+
+We are going to create an interactive map, overlayed with street map to show states, and a night time lights layer.
+
+To browse all the provider layers, see http://leaflet-extras.github.io/leaflet-providers/preview/index.html
+
+Adjust the `opacity=` to change the transparency or move the rendering order up or down for individual tile servers.
+
+```{r}
+library(leaflet)
+library(magrittr) # magrittr uses the %>% to even out the code
+map <- leaflet() %>%
+setView(lng = -110.95, lat = 32.275, zoom = 8) %>%
+addProviderTiles("Stamen.Toner") %>%
+addProviderTiles("Esri.WorldImagery", group = "Esri.WorldImagery", options = providerTileOptions(opacity = 0.66, transparent = TRUE)) %>%
+addProviderTiles("OpenStreetMap.Mapnik", group = "OpenStreetMap.Mapnik") %>%
+addProviderTiles("NASAGIBS.ViirsEarthAtNight2012", group = "NASAGIBS.ViirsEarthAtNight2012",options=providerTileOptions(opacity = 0.35, transparent = TRUE)) %>%
+#addMarkers
+ 
+#layers control panel
+addLayersControl(baseGroups = c("Stamen.Toner", "Esri.WorldImagery", "OpenStreetMap.Mapnik", "NASAGIBS.ViirsEarthAtNight2012"), options = layersControlOptions(collapsed = FALSE))
+map
+```
+
+
+
