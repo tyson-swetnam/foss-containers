@@ -20,7 +20,7 @@ June 7, 2019
 
 ## Install data science software on CyVerse Atmosphere
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Docker_%28container_engine%29_logo.svg/2000px-Docker_%28container_engine%29_logo.svg.png" height="150"><img src="https://www.sylabs.io/wp-content/uploads/2018/10/s-icon.png" height="150"><img src="http://jupyter.org/assets/hublogo.svg" height="150">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Docker_%28container_engine%29_logo.svg/2000px-Docker_%28container_engine%29_logo.svg.png" height="150">
 
 +++
 
@@ -35,7 +35,7 @@ $ sudo usermod -aG docker $USER
 $ exit
 ```
 
-@[1](install Docker and Portainer.io)
+@[1](install Docker and Portainer)
 @[2](change `sudo` privileges)
 @[3](exit and restart terminal window)
 
@@ -43,9 +43,9 @@ $ exit
 
 ## Choose your own adventure:
 
-- <span style="font-weight: bold; font-size: 80%; color:#55FF33">Newbie: Find a container that already exists on https://hub.docker.com/</span>
-- <span style="font-weight: bold; font-size: 80%; color:#F9FF33">Veteran: Modify an existing container recipe, adding new dependencies</span> 
-- <span style="font-weight: bold; font-size: 80%; color:#FF0000">Elite: Create your own recipe from scratch</span>
+- <span style="font-weight: bold; font-size: 100%; color:#55FF33">Newbie: Find a container that already exists on https://hub.docker.com/</span>
+- <span style="font-weight: bold; font-size: 100%; color:#F9FF33">Veteran: Modify an existing container recipe, adding new dependencies</span> 
+- <span style="font-weight: bold; font-size: 100%; color:#FF0000">Elite: Create your own recipe from scratch</span>
 
 +++
 
@@ -65,10 +65,10 @@ Done!
 ```
 
 @[1](pull the latest version of Rocker Geospatial RStudio-Server from DockerHub)
-@[2](List stored container images in your Docker cache)
-@[3](Run the Container in detached mode `-d` on port `-p 8787:8787`)
-@[4](List running container instances)
-@[5](Runs RStudio-Server in the background, open it in a new browser tab)
+@[2](List all stored container images in your Docker cache)
+@[3](Run the RStudio container in a detached mode `-d` on port `-p 8787:8787`)
+@[4](List the running container instances)
+@[5](Stop the running container)
 
 +++
 
@@ -85,21 +85,20 @@ RUN apt-get update && apt-get install -y fortune cowsay lolcat
 ENV PATH=/usr/games:${PATH}
 ENV LC_ALL=C
 ENTRYPOINT fortune | cowsay | lolcat
-
 ```
 
-@[1](FROM a image base, e.g. alpine, centos, debian, ubuntu, I use Ubuntu Bionic Beaver 18.04)
-@[2](Add in who the person was who created the container - not required)
-@[3](RUN a set of scripts, here an update and installation of three programs)
-@[4](Set the environment, adding the three new games to the PATH)
-@[5](Use the default language)
+@[1](FROM image base, e.g. alpine, centos, debian, ubuntu, here Ubuntu Bionic Beaver 18.04)
+@[2](MAINTAINER the person was who created the container - not required)
+@[3](RUN a set of scripts, here an update and installation of three linux programs)
+@[4](ENV Set the environment, adding the three new games to the PATH)
+@[5](ENV Use the default language)
 @[6](the ENTRYPOINT is what will happen when the container is run)
 
 +++
 
 @title[DOCKER]
 
-## <span style="color: #e49436">Build your Docker container</span>
+## <span style="color: #e49436">Build the Container locally</span>
 <br>
 
 
@@ -121,5 +120,3 @@ Done!
 @[7](Done!)
 
 ---?image=assets/imagery/endslide.png
-
-
